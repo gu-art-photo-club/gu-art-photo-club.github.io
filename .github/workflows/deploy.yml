@@ -3,7 +3,9 @@ name: Deploy to GitHub Pages
 on:
   # mainブランチにプッシュされたときに実行されます
   push:
-    branches: [ main ]
+    branches: 
+    - main
+    - develop
   # GitHubのUIからも手動で実行できるようにします
   workflow_dispatch:
 
