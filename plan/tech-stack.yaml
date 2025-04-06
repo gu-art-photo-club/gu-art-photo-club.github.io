@@ -1,0 +1,53 @@
+tech_stack:
+  language:
+    - typescript
+    - javascript (only where necessary)
+  framework:
+    base: astro             # メインの静的サイトジェネレータ
+    ui: react               # 部分的な動的UIのために使用
+  styling:
+    utility_css: unocss     # Tailwind互換の超軽量ユーティリティCSS
+    component_library: shadcn/ui # UIコンポーネント集（Tailwind前提、Reactベース）
+    tailwind_compatible: true    # Tailwindっぽい書き方が可能（UnoCSSで吸収）
+  icons:
+    main: unplugin-icons    # ベンダーロックイン回避の万能SVGアイコン生成器
+    fallback: lucide-react  # shadcn互換用のReactアイコンライブラリ
+  image_handling:
+    asset_optimization: astro:assets  # レスポンシブ画像生成・最適化・遅延読込
+    lazy_loading: true
+    responsive_loading: true
+    format_conversion: webp
+  interactivity:
+    carousel: keen-slider   # 軽量かつ高機能なカルーセル
+    modal: shadcn/ui modal
+    accordion: shadcn/ui accordion
+  content_management:
+    type: local data files
+    works_data: src/data/works.ts # import式で画像も含めて管理
+    schedule_data: src/data/schedule.yaml # 年間スケジュールなど
+  build_toolchain:
+    bundler: vite
+    formatter: prettier
+    linter: eslint
+    module_resolution: import aliases (Astro/Vite対応)
+  deployment:
+    method: github-pages
+    output_dir: dist
+    domain: optional custom domain
+    ssl: cloudflare
+    dns_provider: cloudflare
+    cdn_cache: true
+  testing_monitoring:
+    accessibility_check: manual (recommended)
+    performance_monitoring: lighthouse or page speed insights
+    analytics: optional (GA4 or Plausible)
+
+meta:
+  created_by: 君
+  role: 美術部ウェブ界のひとり情シス
+  intended_audience: 学生、保護者、新入部員、好奇心旺盛な通行人
+  priorities:
+    - モバイルファースト
+    - 高速表示
+    - 綺麗なギャラリー
+    - 後輩に引き継げる構成

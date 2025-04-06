@@ -1,0 +1,76 @@
+# 年間スケジュール
+academic_year: 2024 # 令和6年度
+
+# イベント一覧
+events:
+  - title: 新入生歓迎会
+    date: 2024-04-10
+    description: 新入生向けの歓迎会を行います。部活動の紹介や自己紹介など。
+    location: 第1美術室
+    type: internal # 部内イベント
+
+  - title: 春季作品制作期間
+    start_date: 2024-04-15
+    end_date: 2024-05-31
+    description: 春季の作品制作期間です。各自テーマに沿って作品を制作します。
+    type: activity # 活動期間
+
+  - title: 美術館見学
+    date: 2024-05-20
+    description: 岐阜県美術館で開催される企画展を見学します。
+    location: 岐阜県美術館
+    type: excursion # 見学会
+
+  - title: 前期作品展
+    start_date: 2024-06-20
+    end_date: 2024-06-25
+    description: 春季に制作した作品を展示します。
+    location: 学生会館1Fギャラリー
+    type: exhibition # 展示会
+
+  - title: 夏季合宿
+    start_date: 2024-08-10
+    end_date: 2024-08-12
+    description: 美術部・写真研究会合同の夏季合宿を行います。
+    location: 岐阜県高山市
+    type: camp # 合宿
+
+  - title: 大学祭展示準備
+    start_date: 2024-09-01
+    end_date: 2024-10-31
+    description: 大学祭での展示作品の制作期間です。
+    type: activity # 活動期間
+
+  - title: 大学祭展示
+    start_date: 2024-11-02
+    end_date: 2024-11-03
+    description: 大学祭での作品展示を行います。
+    location: 第1美術室
+    type: exhibition # 展示会
+
+  - title: 冬季作品制作期間
+    start_date: 2024-11-15
+    end_date: 2025-01-31
+    description: 冬季の作品制作期間です。
+    type: activity # 活動期間
+
+  - title: 卒業制作展
+    start_date: 2025-02-15
+    end_date: 2025-02-20
+    description: 卒業生の作品展示を行います。
+    location: 学生会館1Fギャラリー
+    type: exhibition # 展示会
+
+# 定例活動
+regular_activities:
+  - title: 定例会
+    day: wednesday # 毎週水曜日
+    time: "13:00-16:00"
+    location: 第1美術室
+    description: 週に一度の定例会です。作品制作や情報共有を行います。
+
+  - title: 自由制作日
+    day: friday # 毎週金曜日
+    time: "15:00-18:00"
+    location: 第1美術室
+    description: 希望者が集まって自由に制作活動を行います。参加は任意です。
