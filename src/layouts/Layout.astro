@@ -1,0 +1,93 @@
+---
+import { MobileNav } from '@/components/MobileNav';
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+const navigation = [
+	{ name: 'ホーム', href: '/' },
+	{ name: '部活について', href: '/about' },
+	{ name: 'ギャラリー', href: '/gallery' },
+	{ name: '年間予定', href: '/schedule' },
+	{ name: '入部案内', href: '/join' },
+];
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="岐阜大学 美術部・写真研究会の公式Webサイト" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="fixed w-full z-50">
+			<nav class="bg-white/80 backdrop-blur-sm border-b border-neutral-200">
+				<div class="max-w-7xl mx-auto px-4">
+					<div class="flex h-16 items-center justify-between">
+						<div class="flex-1">
+							<a href="/" class="text-base sm:text-lg font-bold inline-flex items-center">
+								<span class="hidden sm:inline">岐阜大学</span>
+								<span class="sm:hidden">岐大</span>
+								<span class="text-neutral-500 ml-2">美術部・写真研究会</span>
+							</a>
+						</div>
+						<div class="hidden md:flex md:gap-x-8">
+							{navigation.map((item) => (
+								<a
+									href={item.href}
+									class="text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium"
+								>
+									{item.name}
+								</a>
+							))}
+						</div>
+						<div class="flex md:hidden">
+							<MobileNav items={navigation} client:load />
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<slot />
+
+		<footer class="bg-neutral-900 text-white py-12">
+			<div class="max-w-7xl mx-auto px-4">
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div>
+						<h3 class="text-lg font-bold mb-4">岐阜大学 美術部・写真研究会</h3>
+						<p class="text-neutral-400">
+							〒501-1193<br/>
+							岐阜県岐阜市柳戸1-1<br/>
+							岐阜大学
+						</p>
+					</div>
+					<div>
+						<h3 class="text-lg font-bold mb-4">リンク</h3>
+						<ul class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+							{navigation.map((item) => (
+								<li>
+									<a
+										href={item.href}
+										class="text-neutral-400 hover:text-white transition-colors"
+									>
+										{item.name}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				</div>
+				<div class="mt-8 pt-8 border-t border-neutral-800 text-center text-sm text-neutral-400">
+					<p>&copy; {new Date().getFullYear()} 岐阜大学 美術部・写真研究会. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

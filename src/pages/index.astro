@@ -1,0 +1,151 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { Button } from "@/components/ui/button"
+import { Camera, Palette, ArrowRight, Instagram, Twitter } from 'lucide-react';
+
+const heroImage = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?auto=format&fit=crop&q=80&w=2066";
+---
+
+<Layout title="岐阜大学 美術部・写真研究会">
+	<main class="min-h-screen">
+		<!-- Hero Section -->
+		<section class="relative h-[90vh] sm:h-screen">
+			<div class="absolute inset-0">
+				<img 
+					src={heroImage} 
+					alt="Art and Photography" 
+					class="w-full h-full object-cover"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/50"></div>
+			</div>
+			
+			<div class="relative h-full flex flex-col items-center justify-center text-white px-4">
+				<h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-center mb-4 leading-tight">
+					岐阜大学<br/>美術部・写真研究会
+				</h1>
+				<p class="text-base sm:text-lg md:text-xl text-center mb-8 max-w-2xl leading-relaxed">
+					絵画、デザイン、写真、デジタルアートなど<br class="hidden sm:block"/>
+					多様な創作活動を行っています
+				</p>
+				<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8">
+					<a href="/gallery">
+						<Button 
+							variant="outline" 
+							size="lg" 
+							class="w-full sm:w-auto bg-white/90 text-black hover:bg-white hover:text-black border-white backdrop-blur-sm"
+						>
+							<Camera class="mr-2 h-5 w-5" />
+							作品を見る
+						</Button>
+					</a>
+					<a href="/about">
+						<Button 
+							variant="outline" 
+							size="lg" 
+							class="w-full sm:w-auto bg-white/90 text-black hover:bg-white hover:text-black border-white backdrop-blur-sm"
+						>
+							<Palette class="mr-2 h-5 w-5" />
+							部活について
+						</Button>
+					</a>
+				</div>
+				<div class="flex gap-4">
+					<a 
+						href="https://twitter.com/gifuart" 
+						target="_blank" 
+						rel="noopener noreferrer"
+						class="bg-white/10 p-3 rounded-full hover:bg-white/20 transition-colors"
+					>
+						<Twitter class="h-6 w-6" />
+						<span class="sr-only">Twitter</span>
+					</a>
+					<a 
+						href="https://instagram.com/gifuart" 
+						target="_blank" 
+						rel="noopener noreferrer"
+						class="bg-white/10 p-3 rounded-full hover:bg-white/20 transition-colors"
+					>
+						<Instagram class="h-6 w-6" />
+						<span class="sr-only">Instagram</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Featured Works Preview -->
+		<section class="py-12 sm:py-16 px-4 bg-white">
+			<div class="max-w-7xl mx-auto">
+				<h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">最近の作品</h2>
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+					{[
+						"https://images.unsplash.com/photo-1579783900882-c0d3dad7b119",
+						"https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5",
+						"https://images.unsplash.com/photo-1579762715061-7c6e6745f1a2"
+					].map((image) => (
+						<div class="relative aspect-[4/3] sm:aspect-square overflow-hidden rounded-lg group">
+							<img 
+								src={`${image}?auto=format&fit=crop&w=800`}
+								alt="Featured work" 
+								class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+							/>
+							<div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						</div>
+					))}
+				</div>
+				<div class="text-center mt-8 sm:mt-12">
+					<a href="/gallery">
+						<Button variant="outline" size="lg" class="w-full sm:w-auto">
+							もっと見る
+							<ArrowRight className="ml-2 h-4 w-4" />
+						</Button>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- About Preview -->
+		<section class="py-12 sm:py-16 px-4 bg-neutral-50">
+			<div class="max-w-7xl mx-auto">
+				<h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">活動について</h2>
+				<div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+					<div class="space-y-6 order-2 md:order-1">
+						<h3 class="text-xl sm:text-2xl font-semibold">創作の自由を大切に</h3>
+						<p class="text-neutral-600 leading-relaxed text-base sm:text-lg">
+							美術部と写真研究会は合同で活動しています。週に一度の定例会を中心に、
+							それぞれが自由に創作活動を行っています。デジタルからアナログまで、
+							表現方法は自由です。
+						</p>
+						<ul class="space-y-3 text-sm sm:text-base">
+							<li class="flex items-center gap-2">
+								<span class="w-2 h-2 bg-neutral-900 rounded-full"></span>
+								活動日：水曜日 13:00～
+							</li>
+							<li class="flex items-center gap-2">
+								<span class="w-2 h-2 bg-neutral-900 rounded-full"></span>
+								場所：学内部室
+							</li>
+							<li class="flex items-center gap-2">
+								<span class="w-2 h-2 bg-neutral-900 rounded-full"></span>
+								部員数：約15名
+							</li>
+						</ul>
+						<a href="/about">
+							<Button class="w-full sm:w-auto">
+								詳しく見る
+								<ArrowRight className="ml-2 h-4 w-4" />
+							</Button>
+						</a>
+					</div>
+					<div class="relative aspect-[4/3] rounded-lg overflow-hidden order-1 md:order-2">
+						<img 
+							src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800" 
+							alt="Club activities" 
+							class="w-full h-full object-cover"
+						/>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

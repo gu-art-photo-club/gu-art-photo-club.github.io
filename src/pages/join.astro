@@ -1,0 +1,97 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { Button } from "@/components/ui/button"
+import { Instagram, Twitter } from 'lucide-react';
+
+const joinImage = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?auto=format&fit=crop&q=80&w=2066";
+---
+
+<Layout title="入部案内 - 岐阜大学 美術部・写真研究会">
+	<main class="min-h-screen pt-16">
+		<section class="relative py-12 sm:py-16 px-4">
+			<div class="max-w-7xl mx-auto">
+				<div class="grid md:grid-cols-2 gap-12 items-start">
+					<div>
+						<h1 class="text-3xl sm:text-4xl font-bold mb-6">入部案内</h1>
+						
+						<div class="prose prose-neutral max-w-none">
+							<p class="text-lg text-neutral-600 leading-relaxed">
+								美術部・写真研究会では、新入部員を随時募集しています。
+								経験の有無は問いません。創作活動に興味のある方なら誰でも歓迎です！
+							</p>
+
+							<h2 class="text-xl font-semibold mt-8 mb-4">入部方法</h2>
+							<ol class="space-y-4 text-neutral-600">
+								<li class="flex gap-4">
+									<span class="font-bold text-neutral-900">1.</span>
+									<p>見学に来てください（水曜日13:00～）</p>
+								</li>
+								<li class="flex gap-4">
+									<span class="font-bold text-neutral-900">2.</span>
+									<p>部員と話をして、活動内容を確認</p>
+								</li>
+								<li class="flex gap-4">
+									<span class="font-bold text-neutral-900">3.</span>
+									<p>入部希望の場合は、その場で手続き可能です</p>
+								</li>
+							</ol>
+
+							<h2 class="text-xl font-semibold mt-8 mb-4">必要なもの</h2>
+							<ul class="space-y-2 text-neutral-600">
+								<li>・年会費：2,000円</li>
+								<li>・学生証</li>
+							</ul>
+
+							<h2 class="text-xl font-semibold mt-8 mb-4">お問い合わせ</h2>
+							<p class="text-neutral-600">
+								見学や入部についての質問は、以下のSNSからお気軽にどうぞ。
+							</p>
+
+							<div class="flex gap-4 mt-4">
+								<a 
+									href="https://twitter.com/gifuart" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
+								>
+									<Twitter class="h-5 w-5" />
+									<span>Twitter</span>
+								</a>
+								<a 
+									href="https://instagram.com/gifuart" 
+									target="_blank" 
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-100 rounded-full hover:bg-neutral-200 transition-colors"
+								>
+									<Instagram class="h-5 w-5" />
+									<span>Instagram</span>
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="space-y-6">
+						<div class="aspect-[4/3] rounded-lg overflow-hidden">
+							<img 
+								src={joinImage}
+								alt="Club activities" 
+								class="w-full h-full object-cover"
+							/>
+						</div>
+
+						<div class="bg-neutral-100 p-6 rounded-lg">
+							<h3 class="font-medium text-lg mb-3">活動情報</h3>
+							<ul class="space-y-2 text-neutral-600">
+								<li>・活動日：毎週水曜日</li>
+								<li>・時間：13:00～</li>
+								<li>・場所：学内部室</li>
+								<li>・部員数：約15名</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

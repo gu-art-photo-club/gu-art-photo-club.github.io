@@ -1,0 +1,103 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { Button } from "@/components/ui/button"
+import { Calendar, MapPin, Users, ArrowRight } from 'lucide-react';
+
+const clubImage = "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=2066";
+---
+
+<Layout title="部活について - 岐阜大学 美術部・写真研究会">
+	<main class="min-h-screen pt-16">
+		<section class="relative py-12 sm:py-16 px-4">
+			<div class="max-w-7xl mx-auto">
+				<h1 class="text-3xl sm:text-4xl font-bold mb-8">部活について</h1>
+				
+				<div class="grid md:grid-cols-2 gap-8 items-start">
+					<div class="space-y-6">
+						<p class="text-lg text-neutral-600 leading-relaxed">
+							美術部と写真研究会は合同で活動する創作サークルです。
+							絵画、イラスト、写真、デジタルアートなど、表現方法は自由。
+							初心者から経験者まで、それぞれのペースで活動しています。
+						</p>
+
+						<div class="grid gap-4">
+							<div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+								<Calendar class="h-6 w-6 text-neutral-600 mt-1" />
+								<div>
+									<h3 class="font-medium mb-1">活動日時</h3>
+									<p class="text-neutral-600">毎週水曜日 13:00～</p>
+									<p class="text-sm text-neutral-500 mt-1">※長期休暇中は変更の可能性あり</p>
+								</div>
+							</div>
+
+							<div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+								<MapPin class="h-6 w-6 text-neutral-600 mt-1" />
+								<div>
+									<h3 class="font-medium mb-1">活動場所</h3>
+									<p class="text-neutral-600">岐阜大学 学内部室</p>
+									<p class="text-sm text-neutral-500 mt-1">※展示会等は学外で行うことも</p>
+								</div>
+							</div>
+
+							<div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+								<Users class="h-6 w-6 text-neutral-600 mt-1" />
+								<div>
+									<h3 class="font-medium mb-1">部員数</h3>
+									<p class="text-neutral-600">約15名（2024年度）</p>
+									<p class="text-sm text-neutral-500 mt-1">学年問わず募集中！</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="pt-4">
+							<a href="/join">
+								<Button size="lg" class="w-full sm:w-auto">
+									入部案内を見る
+									<ArrowRight class="ml-2 h-4 w-4" />
+								</Button>
+							</a>
+						</div>
+					</div>
+
+					<div class="space-y-8">
+						<div class="aspect-[4/3] rounded-lg overflow-hidden">
+							<img 
+								src={clubImage}
+								alt="Club activities" 
+								class="w-full h-full object-cover"
+							/>
+						</div>
+
+						<div class="bg-white p-6 rounded-lg shadow-sm">
+							<h3 class="text-lg font-medium mb-4">年間スケジュール</h3>
+							<ul class="space-y-4">
+								<li class="flex gap-4">
+									<div class="w-24 font-medium">4月</div>
+									<div>新入生歓迎会</div>
+								</li>
+								<li class="flex gap-4">
+									<div class="w-24 font-medium">7月</div>
+									<div>七夕展示会</div>
+								</li>
+								<li class="flex gap-4">
+									<div class="w-24 font-medium">10月</div>
+									<div>学園祭展示</div>
+								</li>
+								<li class="flex gap-4">
+									<div class="w-24 font-medium">12月</div>
+									<div>冬季展示会</div>
+								</li>
+							</ul>
+							<div class="mt-4">
+								<a href="/schedule" class="text-sm text-neutral-600 hover:text-neutral-900">
+									詳しいスケジュールを見る →
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

@@ -1,0 +1,89 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+
+const events = [
+	{
+		month: "4月",
+		events: [
+			{
+				name: "新入生歓迎会",
+				description: "新入生向けのオリエンテーションと交流会を行います。",
+				date: "4月第2週"
+			},
+			{
+				name: "新歓展示",
+				description: "部員の作品を展示し、新入生に活動を紹介します。",
+				date: "4月中旬"
+			}
+		]
+	},
+	{
+		month: "7月",
+		events: [
+			{
+				name: "七夕展示会",
+				description: "七夕をテーマにした作品展示を行います。",
+				date: "7月初旬"
+			},
+			{
+				name: "前期まとめ",
+				description: "前期の活動の振り返りと夏休みの活動計画を立てます。",
+				date: "7月末"
+			}
+		]
+	},
+	{
+		month: "10月",
+		events: [
+			{
+				name: "学園祭展示",
+				description: "大学祭での作品展示を行います。",
+				date: "10月末"
+			}
+		]
+	},
+	{
+		month: "12月",
+		events: [
+			{
+				name: "冬季展示会",
+				description: "年末恒例の展示会を開催します。",
+				date: "12月中旬"
+			},
+			{
+				name: "年末パーティー",
+				description: "1年の活動を振り返り、来年の計画を立てます。",
+				date: "12月末"
+			}
+		]
+	}
+];
+---
+
+<Layout title="年間予定 - 岐阜大学 美術部・写真研究会">
+	<main class="min-h-screen pt-16">
+		<section class="py-12 sm:py-16 px-4">
+			<div class="max-w-7xl mx-auto">
+				<h1 class="text-3xl sm:text-4xl font-bold mb-8">年間予定</h1>
+				
+				<div class="space-y-8">
+					{events.map((month) => (
+						<div class="bg-white rounded-lg p-6 shadow-sm">
+							<h2 class="text-2xl font-bold mb-4">{month.month}</h2>
+							<div class="space-y-4">
+								{month.events.map((event) => (
+									<div class="border-l-4 border-neutral-200 pl-4">
+										<h3 class="font-medium text-lg">{event.name}</h3>
+										<p class="text-neutral-600 mt-1">{event.description}</p>
+										<p class="text-sm text-neutral-500 mt-1">{event.date}</p>
+									</div>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
