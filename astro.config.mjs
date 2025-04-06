@@ -6,6 +6,8 @@ import { fileURLToPath } from "url";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://gu-art-photo-club.github.io",
+  base: "/",
   integrations: [
     react(),
     UnoCSS({
