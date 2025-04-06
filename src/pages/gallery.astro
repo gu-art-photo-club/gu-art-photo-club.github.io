@@ -1,60 +1,47 @@
 ---
-import '@/styles/globals.css'
 import Layout from '../layouts/Layout.astro';
-
-const images = [
-	{
-		url: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119",
-		title: "デジタルアート作品",
-		artist: "山田 花子",
-		year: "2024"
-	},
-	{
-		url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5",
-		title: "風景写真",
-		artist: "鈴木 一郎",
-		year: "2024"
-	},
-	{
-		url: "https://images.unsplash.com/photo-1579762715061-7c6e6745f1a2",
-		title: "抽象画",
-		artist: "佐藤 太郎",
-		year: "2023"
-	},
-	{
-		url: "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1",
-		title: "ポートレート",
-		artist: "田中 美咲",
-		year: "2023"
-	}
-];
+import '@/styles/globals.css';
+import { works } from '../data/safeWorks';
 ---
 
 <Layout title="ギャラリー - 岐阜大学 美術部・写真研究会">
-	<main class="min-h-screen pt-16">
-		<section class="py-12 sm:py-16 px-4">
-			<div class="max-w-7xl mx-auto">
-				<h1 class="text-3xl sm:text-4xl font-bold mb-8">ギャラリー</h1>
-				
-				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-					{images.map((image) => (
-						<div class="group">
-							<div class="aspect-[4/3] rounded-lg overflow-hidden mb-3">
-								<img 
-									src={`${image.url}?auto=format&fit=crop&w=800`}
-									alt={image.title} 
-									class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-								/>
-							</div>
-							<div class="px-1">
-								<h3 class="font-medium text-lg">{image.title}</h3>
-								<p class="text-neutral-600">{image.artist}</p>
-								<p class="text-sm text-neutral-500">{image.year}</p>
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-	</main>
+  <main class="min-h-screen pt-16">
+    <section class="py-12 sm:py-16 px-4">
+      <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-8">ギャラリー</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {works.map((work) => {
+            // 画像パスを/assets/gallery/ファイル名の形式に変換
+            const imagePath = work.image.replace(/^\.\.\/assets/, '/src/assets');
+            return (
+              <div class="group">
+                <div class="aspect-[4/3] rounded-lg overflow-hidden mb-3">
+                  <img 
+                    src={imagePath}
+                    alt="作品画像" 
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="px-1">
+                  <h3 class="font-medium text-lg">
+                    {work.displayName || '作者非公開'}
+                  </h3>
+
+                  <div class="flex flex-wrap gap-1 mt-1">
+                    {work.tags?.map(tag => (
+                      <span class="bg-neutral-200 text-neutral-700 text-xs px-2 py-0.5 rounded">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
