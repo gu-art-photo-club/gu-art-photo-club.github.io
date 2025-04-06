@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 // https://astro.build/config
 export default defineConfig({
   site: "https://gu-art-photo-club.github.io",
-  base: "/",
+  base: process.env.NODE_ENV === 'production' ? '/home/' : '/',
   integrations: [
     react(),
     UnoCSS({
@@ -29,13 +29,13 @@ export default defineConfig({
       },
     },
   },
-  // 画像設定を削除または変更
-  // image: {
-  //   service: {
-  //     entrypoint: "astro/assets/services/sharp",
-  //   },
-  //   format: ["webp"],
-  // },
+  // 画像最適化の設定を復活
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+    format: ["webp"],
+  },
   output: "static",
   build: {
     format: "file",
