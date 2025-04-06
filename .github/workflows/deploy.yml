@@ -47,9 +47,8 @@ jobs:
               const fs = require('fs');
               const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
               if (!pkg.overrides) pkg.overrides = {};
-              // 必要に応じて競合しているパッケージのバージョンを指定
-              // 例: @julr/unocss-preset-formsとunocssの競合を解決
-              pkg.overrides['unocss'] = '^0.53.0';
+              // @julr/unocss-preset-formsとunocssの競合を解決
+              pkg.overrides['unocss'] = '^66.0.0';
               fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
             "
             echo "Updated package.json with overrides"
@@ -73,4 +72,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1 
+        uses: actions/deploy-pages@v2 
