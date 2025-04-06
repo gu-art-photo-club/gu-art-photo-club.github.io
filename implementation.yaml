@@ -1,0 +1,112 @@
+project:
+  name: gifu-art-photo-club-site
+  description: >
+    岐阜大学 美術部・写真研究会の公式Webサイト。
+    スマホファースト、静的構成、画像中心、更新しやすさ重視。
+
+  goals:
+    - モバイルファーストのレイアウト
+    - 写真を美しく見せるギャラリー
+    - カルーセルなど動的UIは最小限に限定
+    - GitHub Pagesで無料ホスティング
+    - カスタムドメイン & SSL対応（Cloudflare）
+    - 初心者でも引き継げる構成と設計
+
+tech_stack:
+  frontend:
+    framework: astro
+    partial_ui_framework: react
+    language: typescript
+  styling:
+    utility_css: unocss
+    component_library: shadcn/ui
+    tailwind_compatibility: true
+  icons:
+    dynamic_icons: unplugin-icons
+    react_icon_fallback: lucide-react
+  components:
+    carousel: keen-slider
+    modal: shadcn/ui modal (or custom)
+    accordion: shadcn/ui accordion
+  build_tool:
+    bundler: vite
+    formatter: prettier
+    linter: eslint
+  deployment:
+    platform: github-pages
+    static_output_dir: dist
+    ssl: cloudflare
+    custom_domain: optional
+    dns_provider: cloudflare
+  content_management:
+    images: stored in /public/images/
+    pages: markdown or astro templates
+    schedule: yaml or json
+
+structure:
+  layout:
+    header: responsive navigation
+    footer: site info + contact
+    theme: light (with optional dark mode toggle)
+  pages:
+    - path: /
+      name: Home
+      content:
+        - hero_image: true
+        - featured_works_preview: true
+        - scroll_to_about: true
+    - path: /about
+      name: About the Club
+      content:
+        - member_count: 15名程度
+        - activity_time: 水曜日13時から
+        - location: 学内部室
+        - description: >
+            美術部と写真研究会は合同で活動しています。
+            絵画、デザイン、写真、デジタルアートなど多様な創作を尊重。
+    - path: /gallery
+      name: Gallery
+      content:
+        - images: dynamic grid layout
+        - modal_viewer: true
+        - filtering: optional
+        - lazy_load: true
+        - carousel: true
+    - path: /schedule
+      name: Yearly Schedule
+      content:
+        - layout: timeline or accordion
+        - data_source: /data/schedule.yaml
+    - path: /join
+      name: Join Us
+      content:
+        - new_member_info: true
+        - activity_day: 水曜日
+        - activity_time: 13:00～
+        - cta: "見学歓迎・新入部員募集中！"
+        - contact_methods:
+            - email
+            - instagram
+            - optional_form: false
+
+assets:
+  images:
+    directory: public/images/
+    optimization: astro:assets or responsive loading
+    format: jpg, png, webp
+  icons:
+    collections:
+      - mdi
+      - carbon
+      - lucide
+    usage:
+      method: Icon components via unplugin-icons
+
+meta:
+  author:
+    name: 君
+    role: 部活Web開発担当
+    github: your-gh-username
+    notes: >
+      このYAMLを見た未来の担当者へ。
+      怖がらずに触ってください。壊れてもGitのせいにできます。

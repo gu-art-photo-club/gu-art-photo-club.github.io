@@ -1,0 +1,78 @@
+---
+description: Used to manage (update, retrieve) plan for this project
+globs: 
+alwaysApply: false
+---
+# Plan for Implementation
+
+This document defines the structure and workflow for managing implementation planning through the `plan` folder.
+
+---
+
+## plan Folder Structure
+
+The `plan` folder contains the core planning files, all in Markdown format. These files work together to capture the current state of implementation and to plan the next steps:
+
+```mermaid
+flowchart TD
+    AC[activeContext.md] --> P[progress.md]
+```
+
+### Core Files (Required)
+
+1. `activeContext.md`
+   - Current work focus
+   - Recent changes
+   - Next steps
+   - Active decisions and considerations
+   - Important patterns and preferences
+   - Learnings and project insights
+
+6. `progress.md`
+   - What works
+   - What's left to build
+   - Current status
+   - Known issues
+   - Evolution of project decisions
+
+
+## Core Workflow
+
+```mermaid
+flowchart TD
+    Start[Start] --> readDocs[Read Docs]
+    readDocs --> createPlan[Create Plan]
+    readDocs --> |don't exist| createDocs[Create Docs]
+    createPlan --> Documents[Documents in Chat]
+```
+
+---
+
+## Plan Updates
+
+Plan updates occur when:
+
+1. Discovering new project patterns
+2. After implementing significant changes
+3. When user requests with **update plan** (MUST review ALL files)
+4. When context needs clarification 
+
+```mermaid
+flowchart TD
+    Start[Update Process]
+    
+    subgraph Process
+        P1[Review ALL Files]
+        P2[Read `docs` and `plan`]
+        P3[Clarify Next Steps]
+        P4[Document Insights & Patterns]
+        
+        P1 --> P2 --> P3 --> P4
+    end
+    
+    Start --> Process
+```
+
+Note: When triggered by **update plan**, I MUST review every docs file and plan file, even if some don't require updates. Focus particularly on activeContext.md and progress.md as they track current state.
+
+REMEMBER: After every memory reset, I begin completely fresh. The plan is my only link to previous work. It must be maintained with precision and clarity, as my effectiveness depends entirely on its accuracy.
