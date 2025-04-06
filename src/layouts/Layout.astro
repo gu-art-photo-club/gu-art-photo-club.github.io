@@ -9,11 +9,11 @@ interface Props {
 const { title } = Astro.props;
 
 const navigation = [
-	{ name: 'ホーム', href: '/' },
-	{ name: '部活について', href: '/about' },
-	{ name: 'ギャラリー', href: '/gallery' },
-	{ name: '年間予定', href: '/schedule' },
-	{ name: '入部案内', href: '/join' },
+	{ name: 'ホーム', href: `${import.meta.env.BASE_URL}` },
+	{ name: '部活について', href: `${import.meta.env.BASE_URL}about` },
+	{ name: 'ギャラリー', href: `${import.meta.env.BASE_URL}gallery` },
+	{ name: '年間予定', href: `${import.meta.env.BASE_URL}schedule` },
+	{ name: '入部案内', href: `${import.meta.env.BASE_URL}join` },
 ];
 ---
 
@@ -23,7 +23,7 @@ const navigation = [
 		<meta charset="UTF-8" />
 		<meta name="description" content="岐阜大学 美術部・写真研究会の公式Webサイト" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		{import.meta.env.PUBLIC_GA_MEASUREMENT_ID && (
@@ -36,7 +36,7 @@ const navigation = [
 				<div class="max-w-7xl mx-auto px-4">
 					<div class="flex h-16 items-center justify-between">
 						<div class="flex-1">
-							<a href="/" class="text-base sm:text-lg font-bold inline-flex items-center">
+							<a href={`${import.meta.env.BASE_URL}`} class="text-base sm:text-lg font-bold inline-flex items-center">
 								<span class="hidden sm:inline">岐阜大学</span>
 								<span class="sm:hidden">岐大</span>
 								<span class="text-neutral-500 ml-2">美術部・写真研究会</span>
