@@ -29,6 +29,16 @@ const heroImage = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?
 					多様な創作活動を行っています
 				</p>
 				<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-8">
+					<a href={`${import.meta.env.BASE_URL}about`}>
+						<Button 
+							variant="outline" 
+							size="lg" 
+							className="w-full sm:w-auto bg-white/90 text-black hover:bg-white hover:text-black border-white backdrop-blur-sm"
+						>
+							<Palette className="mr-2 h-5 w-5" />
+							部活について
+						</Button>
+					</a>
 					<a href={`${import.meta.env.BASE_URL}gallery`}>
 						<Button 
 							variant="outline" 
@@ -38,15 +48,14 @@ const heroImage = "https://images.unsplash.com/photo-1579762715118-a6f1d4b934f1?
 							<Camera className="mr-2 h-5 w-5" />
 							作品を見る
 						</Button>
-					</a>
-					<a href={`${import.meta.env.BASE_URL}about`}>
-						<Button 
-							variant="outline" 
+					<a href=`${import.meta.env.BASE_URL}access`>
+						<Button
+						variant="outline" 
 							size="lg" 
 							className="w-full sm:w-auto bg-white/90 text-black hover:bg-white hover:text-black border-white backdrop-blur-sm"
 						>
-							<Palette className="mr-2 h-5 w-5" />
-							部活について
+							<ArrowRight className="mr-2 h-5 w-5" />
+							アクセス
 						</Button>
 					</a>
 				</div>

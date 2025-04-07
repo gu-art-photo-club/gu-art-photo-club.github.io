@@ -1,0 +1,39 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { accessList } from "../data/access";
+import { Button } from "@/components/ui/button"
+
+---
+
+<Layout title="部室へのアクセス - 岐阜大学 美術部・写真研究会">
+	<main class="min-h-screen pt-16">
+		<section class="relative py-12 sm:py-16 px-4">
+			<div class="max-w-7xl mx-auto">
+				<h1 class="text-3xl sm:text-4xl font-bold mb-8">部室へのアクセス</h1>
+				
+				<div class="flex flex-col gap-8 items-start ">
+					<div class="space-y-6">
+						<p class="text-lg text-neutral-600 leading-relaxed">
+                            美術部・写真研究会の部室への行き方を紹介します。<br/>
+						</p>
+					</div>
+					<div class="md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-15">
+						{accessList.map(({image, description, id}) => (
+							<div class="mb-8 flex flex-col justify-start">
+								<p class="text-lg mb-2 md:text-xl">{description}</p>
+								<Image
+									src={image}
+									alt={`acccess image ${id}`}
+									class="w-full h-full object-cover rounded-lg shadow-lg"
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+				<div class="text-lg md:text-xl">電気が付いていたら左の扉から入ってきてください！</div>
+			</div>
+		</section>
+	</main>
+</Layout>

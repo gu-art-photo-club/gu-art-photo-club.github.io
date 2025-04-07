@@ -9,11 +9,12 @@ interface Props {
 const { title } = Astro.props;
 
 const navigation = [
-	{ name: 'ホーム', href: `${import.meta.env.BASE_URL}` },
-	{ name: '部活について', href: `${import.meta.env.BASE_URL}about` },
-	{ name: 'ギャラリー', href: `${import.meta.env.BASE_URL}gallery` },
-	{ name: '年間予定', href: `${import.meta.env.BASE_URL}schedule` },
-	{ name: '入部案内', href: `${import.meta.env.BASE_URL}join` },
+	{ name: 'ホーム', href: '/' },
+	{ name: '部活について', href: '/about' },
+	{ name: 'ギャラリー', href: '/gallery' },
+	{ name: 'アクセス', href: '/access' },
+	{ name: '年間予定', href: '/schedule' },
+	{ name: '入部案内', href: '/join' },
 ];
 ---
 
