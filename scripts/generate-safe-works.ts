@@ -15,7 +15,7 @@ interface Author {
 
 // 出力用の型定義
 interface SafeWork {
-  image: string;
+  image: string; // 注: 実際はESMモジュール参照になりますが型定義上は文字列のまま
   displayName: string;
   tags: string[];
 }
@@ -27,36 +27,46 @@ const output = path.resolve('src/data/safeWorks.ts');
 try {
   // 作品のimportを抽出
   const worksContent = fs.readFileSync(worksPath, 'utf-8');
-  
+
   // 正規表現でIDを抽出
   const idRegex = /'([^']+_\d+)'/g;
   const ids: string[] = [];
   let match;
-  
+
   while ((match = idRegex.exec(worksContent)) !== null) {
     ids.push(match[1]);
   }
-  
+
   console.log(`作品ID: ${ids.join(', ')}`);
-  
+
   if (ids.length === 0) {
     throw new Error('作品IDが見つかりませんでした');
   }
-  
+
   // importの抽出
   const importPaths: Record<string, string> = {};
   const importRegex = /import\s+(\w+)\s+from\s+'([^']+)'/g;
-  
+
   while ((match = importRegex.exec(worksContent)) !== null) {
     const varName = match[1];
     const path = match[2];
     importPaths[varName] = path;
   }
-  
+
   // 著者情報の読み込み
   const authors = JSON.parse(fs.readFileSync(authorsPath, 'utf-8')) as Record<string, Author>;
 
-  const merged = ids.map((id) => {
+  // importステートメントを生成
+  const imports: string[] = [];
+  const variables: Record<string, string> = {};
+
+  Object.keys(importPaths).forEach(varName => {
+    const importPath = importPaths[varName];
+    imports.push(`import ${varName} from '${importPath}';`);
+  });
+
+  // 作品データを生成
+  const merged = ids.map(id => {
     const authorId = id.split('_')[0];
     const author = authors[authorId];
 
@@ -65,21 +75,33 @@ try {
     const displayName = author?.nickname || authorId;
     const tags = author?.category ? [author.category] : [];
 
-    // importされた画像パスを使用
-    const imgVarName = `img${id.split('_')[1]}`;
-    const imagePath = importPaths[imgVarName] || "";
+    // IDから画像変数名を特定
+    const imgNumber = id.split('_')[1];
+    const imgVarName = `img${imgNumber.padStart(3, '0')}`;
 
     return {
-      image: imagePath,
+      // 変数名を参照（文字列ではなく変数そのもの）
+      imgVar: imgVarName,
       displayName,
-      tags
+      tags,
     };
   });
 
-  const final = `export const works = ${JSON.stringify(merged, null, 2)};`;
+  // ファイル出力（JSONではなくオブジェクトリテラルで出力）
+  const worksArray = merged
+    .map(work => {
+      return `{
+    image: ${work.imgVar},
+    displayName: "${work.displayName}",
+    tags: ${JSON.stringify(work.tags)}
+  }`;
+    })
+    .join(',\n  ');
+
+  const final = `${imports.join('\n')}\n\nexport const works = [\n  ${worksArray}\n];`;
 
   fs.writeFileSync(output, final);
-  console.log('✅ safeWorks.ts with tags generated!');
+  console.log('✅ safeWorks.ts with ESM imports generated!');
 } catch (error: unknown) {
   console.error('エラーが発生しました:', error);
   // スタックトレースを表示
