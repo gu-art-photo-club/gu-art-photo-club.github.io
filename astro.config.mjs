@@ -4,10 +4,11 @@ import UnoCSS from "@unocss/astro";
 import Icons from "unplugin-icons/vite";
 import { fileURLToPath } from "url";
 
+const isProd = process.env.NODE_ENV === "production";
 // https://astro.build/config
 export default defineConfig({
   site: "https://gu-art-photo-club.github.io",
-  base: "/",
+  base: isProd? "/gu-art-photo-club/" : "/",
   integrations: [
     react(),
     UnoCSS({
